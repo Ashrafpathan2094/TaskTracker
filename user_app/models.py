@@ -7,13 +7,16 @@ from django.contrib.auth.models import User
 class Team(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True,)
     is_team_leader = models.BooleanField(default=False)
-
-    
-    
     
     def __str__(self):
         return self.user.username + ' ' + str(self.is_team_leader)
     
+ 
+ 
+ 
+ 
+ 
+ 
     
 class Tasks(models.Model):
     
