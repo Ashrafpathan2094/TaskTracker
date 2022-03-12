@@ -1,5 +1,5 @@
-from tasks.serializers import TeamSerializer
-from user_app.models import Team,Tasks
+# from tasks.serializers import TeamSerializer
+# from user_app.models import Profile,Tasks
 
 from django.shortcuts import render
 from rest_framework import generics
@@ -31,7 +31,7 @@ class TeamCreate(generics.CreateAPIView):
             return Response(serializer.errors)
         
 
-class Availablilty(generics.CreateAPIView):
+class Availablilty(generics.ListAPIView):
     pass
 
 class Task(generics.CreateAPIView):

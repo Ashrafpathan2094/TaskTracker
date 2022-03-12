@@ -2,7 +2,7 @@ from django.urls import path
 from tasks.views import (TeamCreate,Availablilty,Task,UpdateTask,Report)
 urlpatterns = [
     
-    path('<int:pk>/team-create/',TeamCreate.as_view(),name='team-create'),
+    path('team-create/',TeamCreate.as_view(),name='team-create'),
     
     path('availability/',Availablilty.as_view(),name='availability'),
     
