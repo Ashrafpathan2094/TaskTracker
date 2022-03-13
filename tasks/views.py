@@ -2,6 +2,7 @@ from tasks.serializers import TeamSerializer,TaskSerializer
 from user_app.models import Profile
 from tasks.models import Team, Tasks
 
+
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework import viewsets
@@ -19,18 +20,23 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class TeamCreate(APIView):
+    
+
     def get(self, request):
         TeamList = Team.objects.all()
         serializer = TeamSerializer(TeamList,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
     
     def post(self, request):
-        serializer = TeamSerializer(data = request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors)
+        user = self.request.user
+        
+        if user.is_team_leader:
+            serializer = TeamSerializer(data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data,status=status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors)
 
 
 class Availablilty(APIView):
