@@ -1,13 +1,22 @@
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
-from tasks.models import Team
+from tasks.models import Team,Tasks
+from user_app.models import Profile
 
-from user_app.models import Profile,Tasks
+
+
+# class ProfileSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model =Profile
+#         fields ='__all__'
 
 class TeamSerializer(serializers.ModelSerializer):
-    class Meta:
-        Team_ = serializers.StringRelatedField(read_only=True)
+    class Meta: 
         model = Team
-        fields = ['team_name','id']
+        fields = ['team_name',]
         
         
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tasks
+        fields = '__all__'
+  

@@ -1,15 +1,15 @@
 from django.urls import path
-from tasks.views import (TeamCreate,Availablilty,Task,UpdateTask,Report)
+from tasks.views import (TeamCreate,Availablilty,TaskCreate,TaskUpdate,Report)
 urlpatterns = [
     
     path('team-create/',TeamCreate.as_view(),name='team-create'),
     
-    path('availability/',Availablilty.as_view(),name='availability'),
+    path('availability/<int:pk>/',Availablilty.as_view(),name='availability'),
     
-    path('task/',Task.as_view(),name='task'),
+    path('task-create/',TaskCreate.as_view(),name='task'),
     
-    path('update-task/',UpdateTask.as_view(),name='update-task'),
+    path('task-update/<int:pk>/',TaskUpdate.as_view(),name='task'),
     
-    path('report/',Report.as_view(),name='report'),
+    path('report/<int:pk>/',Report.as_view(),name='report'),
     
 ]
